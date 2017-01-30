@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 # empty board list
 lst_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -14,16 +15,16 @@ def display_board(board):
           board[6], board[7], board[8], "\n")
 
 
-def player_input(board):
+def player_input():
     """
     Takes input from player. Needs board as a list input.
     Returns a player played position from 1-9.
     """
-    while True:
-        entry = int(input("Enter a field number (1-9)?"))
-        if entry in board:
-            break
-    return entry
+    entry = ""
+    while entry not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+        entry = input("Enter a field number (1-9)?")
+
+    return int(entry)
 
 
 def place_marker(board, marker, position):
@@ -72,7 +73,7 @@ def is_tie(lst):
 display_board(lst_board)  # displays the board
 while True:
     # player1 game
-    ent1 = player_input(lst_board)  # player input
+    ent1 = player_input()  # player input
     plc = place_marker(lst_board, "X", ent1)  # board with the player marker
     wc1 = win_check(lst_board, "X")
     if wc1 == "X":
@@ -85,7 +86,7 @@ while True:
     is_tie(lst_board)
 
     # player2 game
-    ent2 = player_input(lst_board)  # player input
+    ent2 = player_input()  # player input
     plc2 = place_marker(lst_board, "O", ent2)  # board with the player marker
     wc2 = win_check(lst_board, "O")
     if wc2 == "O":
@@ -96,17 +97,3 @@ while True:
 
     display_board(lst_board)  # displays the board
     is_tie(lst_board)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
